@@ -1,0 +1,10 @@
+{
+    "baseUrl":"https://tst.tramitesadistancia.gob.ar",
+    "ignoreTestFiles":"**/examples/*",
+    "testFiles":[
+        "**/smokeTests/*",
+        "**/pruebasFuncionales/incidencias/*"
+    ],
+    "chromeWebSecurity": false
+
+}
