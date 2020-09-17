@@ -17,21 +17,21 @@ export function iniciarSesion() {
 
     cy.wait(tiempo_espera_prudencial)
     cy.url().then(url => {
-        if (url.includes('/tramitesadistancia/nuevo-tramite')) {
-            logout()
+        if (!url.includes('/tramitesadistancia/nuevo-tramite')) {
+            login()
         }
     })
 
-    login()
+    
 }
 
-function logout() {
+export function logout() {
     cy.visit('/tramitesadistancia/nuevo-tramite')
     cy.get('a[data-toggle="dropdown"]').click()
     cy.get('a[href="/tramitesadistancia/logout;action=logout"]').click()
 }
 
-export function login() {
+function login() {
     cy.visit('/tramitesadistancia/nuevo-tramite')
 
     //TODO: Mejorar esta busqueda
