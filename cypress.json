@@ -3,7 +3,8 @@
     "ignoreTestFiles":"**/examples/*",
     "testFiles":[
         "**/smokeTests/*",
-        "**/pruebasFuncionales/incidencias/*"
+        "**/pruebasFuncionales/incidencias/*",
+        "**/pruebasFuncionales/regresion/*"
     ],
     "chromeWebSecurity": false
 

@@ -10,7 +10,7 @@ const password_usuario1 = Cypress.env('password_usuario_1')
 // no podes hacer cy.click en el afterEach si un test te rompe.
 // Para preservar la unicidad de los tests pongo codigo condicional en beforeEach.
 // Si detecta una sesion abierta la cierra y abre otra
-const tiempo_espera_prudencial = 500 //en milisegundos
+export const tiempo_espera_prudencial = 500 //en milisegundos
 
 export function iniciarSesion() {
     cy.visit('/tramitesadistancia/nuevo-tramite')
