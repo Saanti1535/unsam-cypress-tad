@@ -2,6 +2,8 @@
 
 import { iniciarSesion } from '../../utils'
 
+const tiempo_prudencial = 2000 
+
 describe('DMM-41741: Permitir código de país telefónico distinto a la nacionalidad', () => {
     beforeEach(() => {
         iniciarSesion()
@@ -51,8 +53,9 @@ describe('DMM-41741: Permitir código de país telefónico distinto a la naciona
         escribirCampoMisDatos('telefono', '45556666')
 
         clickEnEditarDatos()
+        cy.wait(tiempo_prudencial)
 
-        //No es lo mas apropiado, pero cypress parece no poder acceder al modulo de zk
+        //FIXME No es lo mas apropiado, pero cypress parece no poder acceder al modulo de zk
         cy.contains('p', 'Datos personales actualizados con éxito').should('not.exist')
     })
 
@@ -64,6 +67,7 @@ describe('DMM-41741: Permitir código de país telefónico distinto a la naciona
         escribirCampoMisDatos('telefono', '45556666')
 
         clickEnEditarDatos()
+        cy.wait(tiempo_prudencial)
 
         //No es lo mas apropiado, pero cypress parece no poder acceder al modulo de zk
         cy.contains('p', 'Datos personales actualizados con éxito').should('not.exist')
@@ -74,7 +78,10 @@ describe('DMM-41741: Permitir código de país telefónico distinto a la naciona
         escribirCampoMisDatos('telefono', '45556666')
 
         limpiarCampoMisDatos('codigoPais')
-        escribirCampoMisDatos('codigoPais', '+4444')
+        escribirCampoMisDatos('codigoPais', '+5444')
+
+        clickEnEditarDatos()
+        cy.wait(tiempo_prudencial)
 
         //No es lo mas apropiado, pero cypress parece no poder acceder al modulo de zk
         cy.contains('p', 'Datos personales actualizados con éxito').should('not.exist')
