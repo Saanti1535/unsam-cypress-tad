@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-const cuit_usuario1 = Cypress.env('cuit_usuario_1')
+export const cuit_usuario1 = Cypress.env('cuit_usuario_1')
 const password_usuario1 = Cypress.env('password_usuario_1')
 
 
