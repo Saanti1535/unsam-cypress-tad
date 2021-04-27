@@ -23,10 +23,22 @@ export function iniciarSesion() {
     })
 }
 
+// Cierra la sesion, en caso de que tengas la sesion ya cerrada rompe
 export function logout() {
     cy.visit('/tramitesadistancia/nuevo-tramite')
     cy.get('a[data-toggle="dropdown"]').click()
     cy.get('a[href="/tramitesadistancia/logout;action=logout"]').click()
+}
+
+// Cierra la sesion, en caso de que tengas la sesion ya cerrada no hace nada
+export function logoutSafe(){
+    cy.visit('/tramitesadistancia/nuevo-tramite')
+        cy.get('a').then(element => {
+            if (element.find('[data-toggle="dropdown"]').length > 0) {
+                cy.get('a[data-toggle="dropdown"]').click()
+                cy.get('a[href="/tramitesadistancia/logout;action=logout"]').click()
+            }
+        })
 }
 
 function login() {
